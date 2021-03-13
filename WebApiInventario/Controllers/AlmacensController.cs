@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -19,9 +20,9 @@ namespace WebApiInventario.Controllers
         // GET: api/Almacens
         public IQueryable<Almacen> GetAlmacens()
         {
-            return db.Almacens;
+            return db.Almacens.Where(x => x.Estado.Equals("1"));
         }
-
+       
         // GET: api/Almacens/5
         [ResponseType(typeof(Almacen))]
         public IHttpActionResult GetAlmacen(int id)
@@ -95,10 +96,12 @@ namespace WebApiInventario.Controllers
                 return NotFound();
             }
 
-            db.Almacens.Remove(almacen);
+            /*FUNCION DELETE*/
+            almacen.Estado = "0";
+            db.Entry(almacen).State = EntityState.Modified;
             db.SaveChanges();
 
-            return Ok(almacen);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

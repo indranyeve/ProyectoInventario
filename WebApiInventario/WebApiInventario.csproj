@@ -162,8 +162,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Connection.cs" />
     <Compile Include="Controllers\AlmacensController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TransaccionsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -186,6 +188,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelAlmacen.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelTransaccion.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelTransaccion.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelTransaccion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelTransaccion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelTransaccion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelTransaccion.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Transaccion.cs">
+      <DependentUpon>ModelTransaccion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +226,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelAlmacen.edmx</DependentUpon>
       <LastGenOutput>ModelAlmacen.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelTransaccion.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelTransaccion.edmx</DependentUpon>
+      <LastGenOutput>ModelTransaccion.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelTransaccion.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelTransaccion.edmx</DependentUpon>
+      <LastGenOutput>ModelTransaccion.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -234,6 +264,13 @@
     </EntityDeploy>
     <Content Include="Models\ModelAlmacen.edmx.diagram">
       <DependentUpon>ModelAlmacen.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\ModelTransaccion.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelTransaccion.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelTransaccion.edmx.diagram">
+      <DependentUpon>ModelTransaccion.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
