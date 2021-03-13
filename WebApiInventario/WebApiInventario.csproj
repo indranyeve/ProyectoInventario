@@ -162,6 +162,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Content\ArticuloController.cs" />
     <Compile Include="Controllers\AlmacensController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -170,6 +171,9 @@
     </Compile>
     <Compile Include="Models\Almacen.cs">
       <DependentUpon>ModelAlmacen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Articulo.cs">
+      <DependentUpon>ModelAlticulo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelAlmacen.Context.cs">
       <AutoGen>True</AutoGen>
@@ -185,6 +189,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelAlmacen.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelAlticulo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAlticulo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelAlticulo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAlticulo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelAlticulo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAlticulo.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -206,6 +225,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelAlmacen.edmx</DependentUpon>
       <LastGenOutput>ModelAlmacen.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelAlticulo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelAlticulo.edmx</DependentUpon>
+      <LastGenOutput>ModelAlticulo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelAlticulo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelAlticulo.edmx</DependentUpon>
+      <LastGenOutput>ModelAlticulo.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -234,6 +263,13 @@
     </EntityDeploy>
     <Content Include="Models\ModelAlmacen.edmx.diagram">
       <DependentUpon>ModelAlmacen.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\ModelAlticulo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelAlticulo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelAlticulo.edmx.diagram">
+      <DependentUpon>ModelAlticulo.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
