@@ -11,14 +11,14 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class ArticuloController : Controller
+    public class TipoInventarioController : Controller
     {
-        // GET: Articulo
+        // GET: TipoInventario
         //Hosted web API REST Service base url  
         string Baseurl = "https://localhost:44350/";
         public async Task<ActionResult> Index()
         {
-            List<MvcArticuloModel> Info = new List<MvcArticuloModel>();
+            List<MvcTipoInventarioModel> Info = new List<MvcTipoInventarioModel>();
 
             using (var client = new HttpClient())
             {
@@ -30,7 +30,7 @@ namespace MVC.Controllers
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
-                HttpResponseMessage Res = await client.GetAsync("api/Articulo/");
+                HttpResponseMessage Res = await client.GetAsync("api/TipoInventario/");
 
                 //Checking the response is successful or not which is sent using HttpClient  
                 if (Res.IsSuccessStatusCode)
@@ -39,7 +39,7 @@ namespace MVC.Controllers
                     var Response = Res.Content.ReadAsStringAsync().Result;
 
                     //Deserializing the response recieved from web api and storing into the Employee list  
-                    Info = JsonConvert.DeserializeObject < List<MvcArticuloModel>>(Response);
+                    Info = JsonConvert.DeserializeObject<List<MvcTipoInventarioModel>>(Response);
 
                 }
                 //returning the employee list to view  
@@ -51,25 +51,25 @@ namespace MVC.Controllers
         {
             if (id == 0)
             {
-                return View(new MvcArticuloModel());
+                return View(new MvcTipoInventarioModel());
             }
             else
             {
-                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Articulo/" + id.ToString()).Result;
-                return View(response.Content.ReadAsAsync<MvcArticuloModel>().Result);
+                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("TipoInventario/" + id.ToString()).Result;
+                return View(response.Content.ReadAsAsync<MvcTipoInventarioModel>().Result);
             }
         }
         [HttpPost]
-        public ActionResult AddOrEdit(MvcArticuloModel Art)
+        public ActionResult AddOrEdit(MvcTipoInventarioModel TipoInv)
         {
-            if (Art.Id_Articulo == 0)
+            if (TipoInv.Id_TipoInventario == 0)
             {
-                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Articulo", Art).Result;
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("TipoInventario", TipoInv).Result;
                 TempData["SuccessMessage"] = "Save Successfully";
             }
             else
             {
-                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Articulo/" + Art.Id_Articulo, Art).Result;
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("TipoInventario/" + TipoInv.Id_TipoInventario, TipoInv).Result;
                 TempData["SuccessMessage"] = "Updated Successfully";
             }
 
@@ -78,9 +78,8 @@ namespace MVC.Controllers
 
         public ActionResult Delete(int id)
         {
-            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Articulo/" + id.ToString()).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("TipoInventario/" + id.ToString()).Result;
             return RedirectToAction("Index");
         }
-
     }
 }

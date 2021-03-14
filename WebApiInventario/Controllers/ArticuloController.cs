@@ -10,7 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using WebApiInventario.Models;
 
-namespace WebApiInventario.Content
+namespace WebApiInventario.Controllers
 {
     public class ArticuloController : ApiController
     {
@@ -19,7 +19,7 @@ namespace WebApiInventario.Content
         // GET: api/Articulo
         public IQueryable<Articulo> GetArticulo()
         {
-            return db.Articulo;
+            return db.Articulo.Where(x => x.Estado.Equals("1"));
         }
 
         // GET: api/Articulo/5
@@ -95,10 +95,14 @@ namespace WebApiInventario.Content
                 return NotFound();
             }
 
-            db.Articulo.Remove(articulo);
+            // FUNCION DELETE 
+             articulo.Estado = "0";
+            db.Entry(articulo).State = EntityState.Modified;
             db.SaveChanges();
 
-            return Ok(articulo);
+            return Ok();
+
+            
         }
 
         protected override void Dispose(bool disposing)
