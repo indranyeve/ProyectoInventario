@@ -13,7 +13,7 @@ namespace MVC.Controllers
 {
     public class AlmacenController : Controller
     {
-        
+
         //Hosted web API REST Service base url  
         string Baseurl = "https://localhost:44350/";
         public async Task<ActionResult> Index()
@@ -30,7 +30,7 @@ namespace MVC.Controllers
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
-                HttpResponseMessage Res = await client.GetAsync("api/Almacens/"); 
+                HttpResponseMessage Res = await client.GetAsync("api/Almacens/");
 
                 //Checking the response is successful or not which is sent using HttpClient  
                 if (Res.IsSuccessStatusCode)
@@ -45,6 +45,41 @@ namespace MVC.Controllers
                 //returning the employee list to view  
                 return View(Info);
             }
+        }
+
+        public ActionResult AddOrEdit(int id = 0)
+        {
+            if(id == 0)
+            {
+                return View(new mvcAlmacenModel());
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Almacens/" + id.ToString()).Result;
+                return View(response.Content.ReadAsAsync<mvcAlmacenModel>().Result);
+            }
+        }
+        [HttpPost]
+        public ActionResult AddOrEdit(mvcAlmacenModel Alm)
+        {
+            if (Alm.Id_Almacen == 0)
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Almacens", Alm).Result;
+                TempData["SuccessMessage"] = "Save Successfully";
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Almacens/" + Alm.Id_Almacen, Alm).Result;
+                TempData["SuccessMessage"] = "Updated Successfully";
+            }
+            
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Almacens/" + id.ToString()).Result;
+            return RedirectToAction("Index");
         }
     }
 }
