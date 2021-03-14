@@ -164,7 +164,9 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Controllers\AlmacensController.cs" />
+    <Compile Include="Controllers\ArticuloController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TipoInventarioController.cs" />
     <Compile Include="Controllers\TransaccionsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -172,6 +174,9 @@
     </Compile>
     <Compile Include="Models\Almacen.cs">
       <DependentUpon>ModelAlmacen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Articulo.cs">
+      <DependentUpon>ModelArticulo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelAlmacen.Context.cs">
       <AutoGen>True</AutoGen>
@@ -188,6 +193,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelAlmacen.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelArticulo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelArticulo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelArticulo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelArticulo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelArticulo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelArticulo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelTipoInventario.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelTipoInventario.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelTipoInventario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelTipoInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelTipoInventario.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelTipoInventario.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\ModelTransaccion.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -202,6 +237,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelTransaccion.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoInventario.cs">
+      <DependentUpon>ModelTipoInventario.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Transaccion.cs">
       <DependentUpon>ModelTransaccion.tt</DependentUpon>
@@ -226,6 +264,26 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelAlmacen.edmx</DependentUpon>
       <LastGenOutput>ModelAlmacen.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelArticulo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelArticulo.edmx</DependentUpon>
+      <LastGenOutput>ModelArticulo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelArticulo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelArticulo.edmx</DependentUpon>
+      <LastGenOutput>ModelArticulo.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelTipoInventario.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelTipoInventario.edmx</DependentUpon>
+      <LastGenOutput>ModelTipoInventario.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelTipoInventario.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelTipoInventario.edmx</DependentUpon>
+      <LastGenOutput>ModelTipoInventario.cs</LastGenOutput>
     </Content>
     <Content Include="Models\ModelTransaccion.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -271,6 +329,20 @@
     </EntityDeploy>
     <Content Include="Models\ModelTransaccion.edmx.diagram">
       <DependentUpon>ModelTransaccion.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\ModelArticulo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelArticulo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelArticulo.edmx.diagram">
+      <DependentUpon>ModelArticulo.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\ModelTipoInventario.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelTipoInventario.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelTipoInventario.edmx.diagram">
+      <DependentUpon>ModelTipoInventario.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

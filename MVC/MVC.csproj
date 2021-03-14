@@ -144,7 +144,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AlmacenController.cs" />
+    <Compile Include="Controllers\ArticuloController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TipoInvetarioController.cs" />
     <Compile Include="Controllers\TransaccionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -152,6 +154,8 @@
     <Compile Include="GlobalVariables.cs" />
     <Compile Include="InventarioDbContext.cs" />
     <Compile Include="Models\mvcAlmacenModel.cs" />
+    <Compile Include="Models\MvcArticuloModel.cs" />
+    <Compile Include="Models\MvcTipoInventarioModel.cs" />
     <Compile Include="Models\MvcTransaccionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -213,6 +217,10 @@
     <Content Include="Views\Almacen\AddOrEdit.cshtml" />
     <Content Include="Views\Transaccion\Index.cshtml" />
     <Content Include="Views\Transaccion\AddOrEdit.cshtml" />
+    <Content Include="Views\Articulo\Index.cshtml" />
+    <Content Include="Views\Articulo\AddOrEdit.cshtml" />
+    <Content Include="Views\TipoInvetario\Index.cshtml" />
+    <Content Include="Views\TipoInvetario\AddOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

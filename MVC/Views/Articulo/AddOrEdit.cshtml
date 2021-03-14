@@ -1,0 +1,64 @@
+﻿@model MVC.Models.MvcArticuloModel
+
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+
+
+<div class="body-form">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.Id_Articulo)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descripcion)
+            @Html.EditorFor(model => model.Descripcion)
+            @Html.ValidationMessageFor(model => model.Descripcion)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id_TipoInventario)
+            @Html.EditorFor(model => model.Id_TipoInventario)
+            @Html.ValidationMessageFor(model => model.Id_TipoInventario)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Unidad)
+            @Html.EditorFor(model => model.Unidad)
+            @Html.ValidationMessageFor(model => model.Unidad)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Existencia)
+            @Html.EditorFor(model => model.Existencia)
+            @Html.ValidationMessageFor(model => model.Existencia)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Num_Referencia)
+            @Html.EditorFor(model => model.Num_Referencia)
+            @Html.ValidationMessageFor(model => model.Num_Referencia)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Costo_Unitario)
+            @Html.EditorFor(model => model.Costo_Unitario)
+            @Html.ValidationMessageFor(model => model.Costo_Unitario)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Estado)
+            @Html.EditorFor(model => model.Estado)
+            @Html.ValidationMessageFor(model => model.Estado)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Marca)
+            @Html.EditorFor(model => model.Marca)
+            @Html.ValidationMessageFor(model => model.Marca)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Sutmit" class="btn bg-primary" />
+            <input type="submit" value="Reset" class="btn btn-dark" />
+        </div>
+    }
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}
