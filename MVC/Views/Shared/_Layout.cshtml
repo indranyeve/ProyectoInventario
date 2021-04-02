@@ -10,29 +10,10 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
     <!-- Default theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
-
+    <link href="~/Content/DataTables/datatables.css" rel="stylesheet" />
 
 </head>
 <body>
-    @*<div class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Inventario SA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Almacen", "Index", "Almacen")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                </div>
-            </div>
-        </div>*@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container container-fluid">
             <a class="navbar-brand" href="#">Inventario SA</a>
@@ -42,6 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">@Html.ActionLink("Almacenes", "Index", "Almacen", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Articulos", "Index", "Articulo", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Transacciones", "Index", "Transaccion", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Tipos de Inventario", "Index", "TipoInvetario", null, new { @class = "nav-link" })</li>
                 </ul>
@@ -64,7 +46,7 @@
             <script type="text/javascript" src="~/Scripts/alertify.min.js"></script>
         }*@
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-
+    <script src="~/Content/DataTables/datatables.min.js"></script>
 
     @RenderSection("scripts", required: false)
     @RenderSection("JavaScript", required: false)

@@ -9,7 +9,7 @@
 <p>
     <a href="@Url.Action("AddOrEdit", "Almacen")" class="btn btn-primary">Crear</a>
 </p>
-<table class="table table-striped">
+<table class="table table-striped"  id="example" class="display" style="width:100%">
     <thead class="table-heading">
         <tr>
             <th>
@@ -25,24 +25,26 @@
         </tr>
     </thead>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id_Almacen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                <a href="@Url.Action("AddOrEdit", "Almacen", new { id = item.Id_Almacen})" class="btn btn-info">Editar</a>
-                <a onclick="Delete(@item.Id_Almacen)" class="btn btn-info">Eliminar</a>
-            </td>
-        </tr>
-    }
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id_Almacen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    <a href="@Url.Action("AddOrEdit", "Almacen", new { id = item.Id_Almacen})" class="btn btn-info">Editar</a>
+                    <a onclick="Delete(@item.Id_Almacen)" class="btn btn-info">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
 
@@ -58,6 +60,9 @@
             alertify.confirm('¿Está seguro de que desea eliminar este registro?', function () {
                 location.href = '@Url.Action("Delete", "Almacen")/'+ id;
             }, null)
-            }
+        }
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
     </script>
     }

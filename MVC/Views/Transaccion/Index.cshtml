@@ -9,7 +9,7 @@
 <p>
     <a href="@Url.Action("AddOrEdit", "Transaccion")" class="btn btn-primary">Crear</a>
 </p>
-<table class="table table-striped">
+<table class="table table-striped" id="example" class="display" style="width:100%">
     <thead class="table-heading">
         <tr>
             <th>
@@ -37,36 +37,38 @@
         </tr>
     </thead>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id_Transaccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipo_Transaccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id_Articulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id_Almacen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                <a href="@Url.Action("AddOrEdit", "Transaccion", new { id = item.Id_Transaccion})" class="btn btn-info">Editar</a>
-                <a onclick="Delete(@item.Id_Transaccion)" class="btn btn-info">Eliminar</a>
-            </td>
-        </tr>
-    }
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id_Transaccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipo_Transaccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id_Articulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id_Almacen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    <a href="@Url.Action("AddOrEdit", "Transaccion", new { id = item.Id_Transaccion})" class="btn btn-info">Editar</a>
+                    <a onclick="Delete(@item.Id_Transaccion)" class="btn btn-info">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
 
@@ -82,6 +84,9 @@
             alertify.confirm('¿Está seguro de que desea eliminar este registro?', function () {
                 location.href = '@Url.Action("Delete", "Transaccion")/'+ id;
             }, null)
-            }
+        }
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
     </script>
 }
