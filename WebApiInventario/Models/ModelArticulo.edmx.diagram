@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="c66cd216f8ba4bc48790ac16c7275c50" Name="Diagram1">
         <EntityTypeShape EntityType="BaseDatosInventarioModel2.Articulo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaseDatosInventarioModel2.TipoInventario" Width="1.5" PointX="0.75" PointY="5.25" />
+        <AssociationConnector Association="BaseDatosInventarioModel2.FK_Articulo_TipoInventario" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

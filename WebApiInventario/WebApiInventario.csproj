@@ -52,6 +52,12 @@
       <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -173,10 +179,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Almacen.cs">
-      <DependentUpon>ModelAlmacen.tt</DependentUpon>
+      <DependentUpon>ModelTransaccion.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Articulo.cs">
-      <DependentUpon>ModelArticulo.tt</DependentUpon>
+      <DependentUpon>ModelTransaccion.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelAlmacen.Context.cs">
       <AutoGen>True</AutoGen>
@@ -239,7 +245,7 @@
       <DependentUpon>ModelTransaccion.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoInventario.cs">
-      <DependentUpon>ModelTipoInventario.tt</DependentUpon>
+      <DependentUpon>ModelTransaccion.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Transaccion.cs">
       <DependentUpon>ModelTransaccion.tt</DependentUpon>

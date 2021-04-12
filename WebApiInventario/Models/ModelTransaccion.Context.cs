@@ -26,5 +26,8 @@ namespace WebApiInventario.Models
         }
     
         public virtual DbSet<Transaccion> Transaccions { get; set; }
+        public virtual DbSet<Almacen> Almacens { get; set; }
+        public virtual DbSet<Articulo> Articuloes { get; set; }
+        public virtual DbSet<TipoInventario> TipoInventarios { get; set; }
     }
 }

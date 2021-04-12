@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario SA</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <link href="~/Content/DataTables/datatables.css" rel="stylesheet" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container container-fluid">
+            <a class="navbar-brand" href="#">Inventario SA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">@Html.ActionLink("Almacenes", "Index", "Almacen", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Articulos", "Index", "Articulo", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Transacciones", "Index", "Transaccion", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Tipos de Inventario", "Index", "TipoInvetario", null, new { @class = "nav-link" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*@section JavaScript
+            {
+
+            <script type="text/javascript" src="~/Scripts/alertify.min.js"></script>
+        }*@
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script src="~/Content/DataTables/datatables.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+    @RenderSection("JavaScript", required: false)
+</body>
+</html>

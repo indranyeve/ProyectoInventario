@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BaseDatosInventarioModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BaseDatosInventarioModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Articulo">
           <Key>
             <PropertyRef Name="Id_Articulo" />
@@ -19,11 +19,36 @@
           <Property Name="Estado" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Marca" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
+        <EntityType Name="TipoInventario">
+          <Key>
+            <PropertyRef Name="Id_TipoInventario" />
+          </Key>
+          <Property Name="Id_TipoInventario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CuentaContable" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Articulo_TipoInventario">
+          <End Role="TipoInventario" Type="Self.TipoInventario" Multiplicity="1" />
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoInventario">
+              <PropertyRef Name="Id_TipoInventario" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="Id_TipoInventario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BaseDatosInventarioModel2StoreContainer">
           <EntitySet Name="Articulo" EntityType="Self.Articulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoInventario" EntityType="Self.TipoInventario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Articulo_TipoInventario" Association="Self.FK_Articulo_TipoInventario">
+            <End Role="TipoInventario" EntitySet="TipoInventario" />
+            <End Role="Articulo" EntitySet="Articulo" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BaseDatosInventarioModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -40,10 +65,38 @@
           <Property Name="Costo_Unitario" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Marca" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TipoInventario" Relationship="BaseDatosInventarioModel2.FK_Articulo_TipoInventario" FromRole="Articulo" ToRole="TipoInventario" />
         </EntityType>
         <EntityContainer Name="BaseDatosInventarioEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Articuloes" EntityType="Self.Articulo" />
+          <EntitySet Name="TipoInventarios" EntityType="BaseDatosInventarioModel2.TipoInventario" />
+          <AssociationSet Name="FK_Articulo_TipoInventario" Association="BaseDatosInventarioModel2.FK_Articulo_TipoInventario">
+            <End Role="TipoInventario" EntitySet="TipoInventarios" />
+            <End Role="Articulo" EntitySet="Articuloes" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="TipoInventario">
+          <Key>
+            <PropertyRef Name="Id_TipoInventario" />
+          </Key>
+          <Property Name="Id_TipoInventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CuentaContable" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Articuloes" Relationship="BaseDatosInventarioModel2.FK_Articulo_TipoInventario" FromRole="TipoInventario" ToRole="Articulo" />
+        </EntityType>
+        <Association Name="FK_Articulo_TipoInventario">
+          <End Type="BaseDatosInventarioModel2.TipoInventario" Role="TipoInventario" Multiplicity="1" />
+          <End Type="BaseDatosInventarioModel2.Articulo" Role="Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoInventario">
+              <PropertyRef Name="Id_TipoInventario" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="Id_TipoInventario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -62,6 +115,16 @@
                 <ScalarProperty Name="Costo_Unitario" ColumnName="Costo_Unitario" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Marca" ColumnName="Marca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoInventarios">
+            <EntityTypeMapping TypeName="BaseDatosInventarioModel2.TipoInventario">
+              <MappingFragment StoreEntitySet="TipoInventario">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id_TipoInventario" ColumnName="Id_TipoInventario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

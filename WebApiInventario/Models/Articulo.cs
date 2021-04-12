@@ -14,6 +14,12 @@ namespace WebApiInventario.Models
     
     public partial class Articulo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Articulo()
+        {
+            this.Transaccions = new HashSet<Transaccion>();
+        }
+    
         public int Id_Articulo { get; set; }
         public string Descripcion { get; set; }
         public int Id_TipoInventario { get; set; }
@@ -23,5 +29,9 @@ namespace WebApiInventario.Models
         public decimal Costo_Unitario { get; set; }
         public string Estado { get; set; }
         public string Marca { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transaccion> Transaccions { get; set; }
+        public virtual TipoInventario TipoInventario { get; set; }
     }
 }

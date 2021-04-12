@@ -16,10 +16,12 @@ namespace WebApiInventario.Controllers
     {
         private BaseDatosInventarioEntities2 db = new BaseDatosInventarioEntities2();
 
+
         // GET: api/Articulo
-        public IQueryable<Articulo> GetArticuloes()
+        public List<Articulo> GetArticuloes()
         {
-            return db.Articuloes.Where(x => x.Estado.Equals("1")); ;
+            List<Articulo> articulos = db.Articuloes.Include(x => x.TipoInventario).Where(x => x.Estado.Equals("1")).ToList();
+            return articulos; 
         }
 
         // GET: api/Articulo/5

@@ -26,5 +26,6 @@ namespace WebApiInventario.Models
         }
     
         public virtual DbSet<Articulo> Articuloes { get; set; }
+        public virtual DbSet<TipoInventario> TipoInventarios { get; set; }
     }
 }

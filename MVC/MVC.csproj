@@ -157,7 +157,11 @@
     <Compile Include="Models\MvcArticuloModel.cs" />
     <Compile Include="Models\MvcTipoInventarioModel.cs" />
     <Compile Include="Models\MvcTransaccionModel.cs" />
+    <Compile Include="Models\TipoInventario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AlmacenService.cs" />
+    <Compile Include="Services\ArticuloService.cs" />
+    <Compile Include="Services\TipoInventarioService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\alertifyjs\alertify.css" />

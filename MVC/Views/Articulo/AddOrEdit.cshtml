@@ -17,8 +17,8 @@
             @Html.ValidationMessageFor(model => model.Descripcion)
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_TipoInventario)
-            @Html.EditorFor(model => model.Id_TipoInventario)
+            <label>Tipo Inventario</label>
+            @Html.DropDownListFor(model => model.Id_TipoInventario, (List<SelectListItem>)ViewBag.TipoInventarioList)
             @Html.ValidationMessageFor(model => model.Id_TipoInventario)
         </div>
         <div class="form-group">

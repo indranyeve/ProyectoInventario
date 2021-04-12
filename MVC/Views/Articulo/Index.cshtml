@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<MVC.Models.MvcArticuloModel>
 
+
 @{
     ViewBag.Title = "Index";
 }
@@ -7,7 +8,7 @@
 <h2>Articulos</h2>
 
 <p>
-    <a href="@Url.Action("AddOrEdit", "Almacen")" class="btn btn-primary">Crear</a>
+    <a href="@Url.Action("AddOrEdit", "Articulo")" class="btn btn-primary">Crear</a>
 </p>
 <table class="table table-striped" id="example" class="display" style="width:100%">
     <thead class="table-heading">
@@ -19,7 +20,8 @@
                 @Html.DisplayNameFor(model => model.Descripcion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Id_TipoInventario)
+                  @Html.DisplayNameFor(model => model.TipoInventario.Descripcion)
+
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Unidad)
@@ -54,7 +56,7 @@
                     @Html.DisplayFor(modelItem => item.Descripcion)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Id_TipoInventario)
+                    @Html.DisplayFor(modelItem => item.TipoInventario.Descripcion)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Unidad)

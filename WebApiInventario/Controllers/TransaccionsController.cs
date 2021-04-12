@@ -17,9 +17,13 @@ namespace WebApiInventario.Controllers
         private BaseDatosInventarioEntities1 db = new BaseDatosInventarioEntities1();
 
         // GET: api/Transaccions
-        public IQueryable<Transaccion> GetTransaccions()
+        public List<Transaccion> GetTransaccions()
         {
-            return db.Transaccions.Where(x => x.Estado.Equals("1")); 
+            List<Transaccion> transaccion = db.Transaccions.Include(x => x.Almacen)
+                .Include(x => x.Articulo)
+                .Where(x => x.Estado.Equals("1"))
+                .ToList();
+            return transaccion;
         }
 
         // GET: api/Transaccions/5

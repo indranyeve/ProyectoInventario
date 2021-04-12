@@ -1,4 +1,5 @@
 ﻿using MVC.Models;
+using MVC.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,39 +16,37 @@ namespace MVC.Controllers
     {
         //Hosted web API REST Service base url  
         string Baseurl = "https://localhost:44350/";
-        public async Task<ActionResult> Index()
+
+        //Llamando Servicio Articulo
+        private readonly ArticuloService _articuloService = new ArticuloService();
+
+        //Llamando Servicio Tipo Inventario
+        private readonly TipoInventarioService _tipoInventarioService = new TipoInventarioService();
+
+        public async Task<ActionResult>  Index()
         {
             List<MvcArticuloModel> Info = new List<MvcArticuloModel>();
 
-            using (var client = new HttpClient())
-            {
-                //Passing service base url  
-                client.BaseAddress = new Uri(Baseurl);
-
-                client.DefaultRequestHeaders.Clear();
-                //Define request data format  
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
-                HttpResponseMessage Res = await client.GetAsync("api/Articulo/");
-
-                //Checking the response is successful or not which is sent using HttpClient  
-                if (Res.IsSuccessStatusCode)
-                {
-                    //Storing the response details recieved from web api   
-                    var Response = Res.Content.ReadAsStringAsync().Result;
-
-                    //Deserializing the response recieved from web api and storing into the Employee list  
-                    Info = JsonConvert.DeserializeObject<List<MvcArticuloModel>>(Response);
-
-                }
-                //returning the employee list to view  
-                return View(Info);
-            }
+            Info = await _articuloService.GetArticuloModels();
+            return View(Info);
         }
 
-        public ActionResult AddOrEdit(int id = 0)
+        //CREATE
+        public async Task<ActionResult> AddOrEdit(int id = 0)
         {
+            var selectList = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "", Text = "Seleccione", Selected = true }
+            };
+
+            var tipoInventarioList = await _tipoInventarioService.GetTipoInventarios();
+            foreach (var item in tipoInventarioList)
+            {
+                selectList.Add(new SelectListItem { Value = item.Id_TipoInventario.ToString(), Text = item.Descripcion, Selected = false });
+            }
+
+            ViewBag.TipoInventarioList = selectList;
+
             if (id == 0)
             {
                 return View(new MvcArticuloModel());
@@ -55,9 +54,10 @@ namespace MVC.Controllers
             else
             {
                 HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Articulo/" + id.ToString()).Result;
-                return View(response.Content.ReadAsAsync<mvcAlmacenModel>().Result);
+                return View(response.Content.ReadAsAsync<MvcArticuloModel>().Result);
             }
         }
+        //ACTUALIZAR
         [HttpPost]
         public ActionResult AddOrEdit(MvcArticuloModel Art)
         {
@@ -75,10 +75,12 @@ namespace MVC.Controllers
             return RedirectToAction("Index");
         }
 
+        //BORRAR
         public ActionResult Delete(int id)
         {
             HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Articulo/" + id.ToString()).Result;
             return RedirectToAction("Index");
         }
+
     }
 }

@@ -21,5 +21,8 @@ namespace WebApiInventario.Models
         public int Cantidad { get; set; }
         public int Id_Almacen { get; set; }
         public string Estado { get; set; }
+    
+        public virtual Almacen Almacen { get; set; }
+        public virtual Articulo Articulo { get; set; }
     }
 }

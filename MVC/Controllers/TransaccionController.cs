@@ -1,4 +1,5 @@
 ﻿using MVC.Models;
+using MVC.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,13 @@ namespace MVC.Controllers
         // GET: Transaccion
         //Hosted web API REST Service base url  
         string Baseurl = "https://localhost:44350/";
+
+        //Llamando Servicio Almacen
+        private readonly AlmacenService _almacenService = new AlmacenService();
+
+        //Llamando Servicio Articulo
+        private readonly ArticuloService _articuloService = new ArticuloService();
+
         public async Task<ActionResult> Index()
         {
             List<MvcTransaccionModel> Info = new List<MvcTransaccionModel>();
@@ -47,8 +55,40 @@ namespace MVC.Controllers
             }
         }
 
-        public ActionResult AddOrEdit(int id = 0)
+        //CREAR
+        public async Task<ActionResult> AddOrEdit(int id = 0)
         {
+
+            var selectList = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "", Text = "Seleccione", Selected = true }
+            };
+
+            var almacenList = await _almacenService.GetAlmacenModels();
+            //ViewBag.AlmacenList = almacenList.Select(x => new SelectListItem { Value = x.Id_Almacen.ToString(), Text = x.Descripcion }).ToList();
+
+            foreach(var item in almacenList)
+            {
+                selectList.Add(new SelectListItem { Value = item.Id_Almacen.ToString(), Text = item.Descripcion, Selected = false });
+            }
+            ViewBag.AlmacenList = selectList;
+
+            var selectList2 = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "", Text = "Seleccione", Selected = true }
+            };
+
+            var articuloList = await _articuloService.GetArticuloModels();
+
+            foreach(var item in articuloList)
+            {
+                selectList2.Add(new SelectListItem { Value = item.Id_Articulo.ToString(), Text = item.Descripcion, Selected = false });
+            }
+            ViewBag.ArticuloList = selectList2;
+
+            //ViewBag.ArticuloList = articuloList.Select(x => new SelectListItem { Value = x.Id_Articulo.ToString(), Text = x.Descripcion }).ToList();
+
+
             if (id == 0)
             {
                 return View(new MvcTransaccionModel());
@@ -59,6 +99,7 @@ namespace MVC.Controllers
                 return View(response.Content.ReadAsAsync<MvcTransaccionModel>().Result);
             }
         }
+        //ACTUALIZAR
         [HttpPost]
         public ActionResult AddOrEdit(MvcTransaccionModel Trans)
         {

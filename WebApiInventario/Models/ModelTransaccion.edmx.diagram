@@ -6,6 +6,12 @@
     <edmx:Diagrams>
       <Diagram DiagramId="53cb1ebe98764579a5b339962c0ea010" Name="Diagram1">
         <EntityTypeShape EntityType="BaseDatosInventarioModel1.Transaccion" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaseDatosInventarioModel1.Almacen" Width="1.5" PointX="3.25" PointY="4" />
+        <EntityTypeShape EntityType="BaseDatosInventarioModel1.Articulo" Width="1.5" PointX="0.5" PointY="4.125" />
+        <AssociationConnector Association="BaseDatosInventarioModel1.FK_Transaccion_Almacen" />
+        <AssociationConnector Association="BaseDatosInventarioModel1.FK_Transaccion_Articulo" />
+        <EntityTypeShape EntityType="BaseDatosInventarioModel1.TipoInventario" Width="1.5" PointX="1.25" PointY="8.75" />
+        <AssociationConnector Association="BaseDatosInventarioModel1.FK_Articulo_TipoInventario" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

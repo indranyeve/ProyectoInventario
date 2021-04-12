@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiInventario", "WebApiI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "..\MVC\MVC.csproj", "{07C2358C-2E2B-4954-B604-DFA9B1145DB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventario.Client", "..\Inventario.Client\Inventario.Client.csproj", "{86F8286E-5D6A-4620-88EC-47CDBDCECF5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{07C2358C-2E2B-4954-B604-DFA9B1145DB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07C2358C-2E2B-4954-B604-DFA9B1145DB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07C2358C-2E2B-4954-B604-DFA9B1145DB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86F8286E-5D6A-4620-88EC-47CDBDCECF5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86F8286E-5D6A-4620-88EC-47CDBDCECF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86F8286E-5D6A-4620-88EC-47CDBDCECF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86F8286E-5D6A-4620-88EC-47CDBDCECF5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

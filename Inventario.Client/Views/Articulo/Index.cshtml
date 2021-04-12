@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Inventario.Client.Models.MvcArticuloModel>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Articulos</h2>
+
+<p>
+    <a href="@Url.Action("AddOrEdit", "Articulo")" class="btn btn-primary">Crear</a>
+</p>
+<table class="table table-striped" id="example" class="display" style="width:100%">
+    <thead class="table-heading">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_Articulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                  @Html.DisplayNameFor(model => model.TipoInventario.Descripcion)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Existencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Num_Referencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Costo_Unitario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marca)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id_Articulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoInventario.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Unidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Existencia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Num_Referencia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Costo_Unitario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marca)
+                </td>
+                <td>
+                    <a href="@Url.Action("AddOrEdit", "Articulo", new { id = item.Id_Articulo})" class="btn btn-info">Editar</a>
+                    <a onclick="Delete(@item.Id_Articulo)" class="btn btn-info">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section Scripts{
+    <script type="text/javascript">
+            $(function () {
+                var successMessage = '@TempData["SuccessMessage"]';
+                if (successMessage != '')
+                    alertify.success(successMessage);
+            });
+
+        function Delete(id) {
+            alertify.confirm('¿Está seguro de que desea eliminar este registro?', function () {
+                location.href = '@Url.Action("Delete", "Articulo")/'+ id;
+            }, null)
+        }
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+}

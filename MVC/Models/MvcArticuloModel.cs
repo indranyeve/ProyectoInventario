@@ -25,5 +25,7 @@ namespace MVC.Models
         public string Estado { get; set; }
         [Required(ErrorMessage = "This field is required")]
         public string Marca { get; set; }
+
+        public virtual TipoInventario TipoInventario { get; set; }
     }
 }

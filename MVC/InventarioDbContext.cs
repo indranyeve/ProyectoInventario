@@ -12,10 +12,10 @@ namespace MVC
         }
 
         public DbSet<mvcAlmacenModel> Almacen { get; set; }
-        //public DbSet<Articulo> Articulo { get; set; }
+        public DbSet<MvcArticuloModel> Articulo { get; set; }
         //public DbSet<AsientosContables> AsientosContables { get; set; }
-        //public DbSet<TipoInventario> TipoInventario { get; set; }
-        //public DbSet<Transaccion> Transaccion { get; set; }   
+        public DbSet<TipoInventario> TipoInventario { get; set; }
+        public DbSet<MvcTransaccionModel> Transaccion { get; set; }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{

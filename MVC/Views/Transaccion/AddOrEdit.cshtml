@@ -8,16 +8,18 @@
     {
         @Html.HiddenFor(model => model.Id_Transaccion)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Tipo_Transaccion)
-            @Html.EditorFor(model => model.Tipo_Transaccion)
-            @Html.ValidationMessageFor(model => model.Tipo_Transaccion)
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Tipo_Transaccion)
+        @Html.DropDownListFor(model => model.Tipo_Transaccion, new SelectList(Enum.GetValues(typeof(MVC.Models.Tipo))))
+        @Html.ValidationMessageFor(model => model.Tipo_Transaccion)
+    </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Articulo)
-            @Html.EditorFor(model => model.Id_Articulo)
+
+            <label>Artículo</label>
+            @Html.DropDownListFor(model => model.Id_Articulo, (List<SelectListItem>)ViewBag.ArticuloList)
             @Html.ValidationMessageFor(model => model.Id_Articulo)
+
         </div>
 
         <div class="form-group">
@@ -33,8 +35,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Almacen)
-            @Html.EditorFor(model => model.Id_Almacen)
+
+            <label>Almacen</label>
+            @Html.DropDownListFor(model => model.Id_Almacen, (List<SelectListItem>)ViewBag.AlmacenList)
             @Html.ValidationMessageFor(model => model.Id_Almacen)
         </div>
 
