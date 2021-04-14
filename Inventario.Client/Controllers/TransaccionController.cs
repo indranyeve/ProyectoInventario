@@ -3,6 +3,8 @@ using Inventario.Client.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -23,6 +25,7 @@ namespace Inventario.Client.Controllers
 
         //Llamando Servicio Articulo
         private readonly ArticuloService _articuloService = new ArticuloService();
+
 
         public async Task<ActionResult> Index()
         {
@@ -55,16 +58,36 @@ namespace Inventario.Client.Controllers
             }
         }
 
+        //CREAR
         public async Task<ActionResult> AddOrEdit(int id = 0)
         {
-            //var tipoInventarioList = await _tipoInventarioService.GetTipoInventarios();
-            //ViewBag.TipoInventarioList = tipoInventarioList.Select(x => new SelectListItem { Value = x.Id_TipoInventario.ToString(), Text = x.Descripcion }).ToList();
+
+            var selectList = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "", Text = "Seleccione", Selected = true }
+            };
 
             var almacenList = await _almacenService.GetAlmacenModels();
-            ViewBag.AlmacenList = almacenList.Select(x => new SelectListItem { Value = x.Id_Almacen.ToString(), Text = x.Descripcion }).ToList();
+            
+            foreach (var item in almacenList)
+            {
+                selectList.Add(new SelectListItem { Value = item.Id_Almacen.ToString(), Text = item.Descripcion, Selected = false });
+            }
+            ViewBag.AlmacenList = selectList;
+
+            var selectList2 = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "", Text = "Seleccione", Selected = true }
+            };
 
             var articuloList = await _articuloService.GetArticuloModels();
-            ViewBag.ArticuloList = articuloList.Select(x => new SelectListItem { Value = x.Id_Articulo.ToString(), Text = x.Descripcion }).ToList();
+
+            foreach (var item in articuloList)
+            {
+                selectList2.Add(new SelectListItem { Value = item.Id_Articulo.ToString(), Text = item.Descripcion, Selected = false });
+            }
+            ViewBag.ArticuloList = selectList2;
+
 
 
             if (id == 0)
@@ -77,6 +100,7 @@ namespace Inventario.Client.Controllers
                 return View(response.Content.ReadAsAsync<MvcTransaccionModel>().Result);
             }
         }
+        //ACTUALIZAR
         [HttpPost]
         public ActionResult AddOrEdit(MvcTransaccionModel Trans)
         {
@@ -90,6 +114,7 @@ namespace Inventario.Client.Controllers
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Transaccions/" + Trans.Id_Transaccion, Trans).Result;
                 TempData["SuccessMessage"] = "Updated Successfully";
             }
+            UpdateCantidad(Trans.Cantidad, Trans.Id_Articulo, Trans.Tipo_Transaccion.ToString());
 
             return RedirectToAction("Index");
         }
@@ -98,6 +123,34 @@ namespace Inventario.Client.Controllers
         {
             HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Transaccions/" + id.ToString()).Result;
             return RedirectToAction("Index");
+        }
+
+        public void UpdateCantidad(int a, int b, string TipoTrans)
+        {
+            //Articulo articulo = db.Articuloes.FirstOrDefault(x => x.Id_Articulo == a);
+
+            if (TipoTrans == "Entrada")
+            {
+                sqlCommand("Update Articulo set Existencia += '" + a + "' Where Id_Articulo = '" + b + "'", openConnection());
+            }
+            else
+            {
+                sqlCommand("Update Articulo set Existencia -= '" + a + "' Where Id_Articulo = '" + b + "'", openConnection());
+            }
+        }
+
+        public SqlConnection openConnection()
+        {
+            var connection = new SqlConnection(@"Data source=DESKTOP-3AO6C47;initial catalog=BaseDatosInventario;integrated security=True;");
+            if (connection.State != ConnectionState.Open) connection.Open();
+            return connection;
+        }
+
+        public SqlCommand sqlCommand(string sqlQuery, SqlConnection connection)
+        {
+            var newSqlCommand = new SqlCommand(sqlQuery, connection);
+            int i = newSqlCommand.ExecuteNonQuery();
+            return newSqlCommand;
         }
     }
 }

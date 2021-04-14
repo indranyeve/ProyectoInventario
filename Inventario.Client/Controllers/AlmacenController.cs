@@ -28,7 +28,7 @@ namespace Inventario.Client.Controllers
 
         public ActionResult AddOrEdit(int id = 0)
         {
-            if(id == 0)
+            if (id == 0)
             {
                 return View(new mvcAlmacenModel());
             }
@@ -51,7 +51,7 @@ namespace Inventario.Client.Controllers
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Almacens/" + Alm.Id_Almacen, Alm).Result;
                 TempData["SuccessMessage"] = "Updated Successfully";
             }
-            
+
             return RedirectToAction("Index");
         }
 

@@ -10,7 +10,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Tipo_Transaccion)
-            @Html.EditorFor(model => model.Tipo_Transaccion)
+            @Html.DropDownListFor(model => model.Tipo_Transaccion, new SelectList(Enum.GetValues(typeof(Inventario.Client.Models.Tipo))))
             @Html.ValidationMessageFor(model => model.Tipo_Transaccion)
         </div>
 
@@ -24,7 +24,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Fecha)
-            @Html.EditorFor(model => model.Fecha)
+            @Html.EditorFor(x => x.Fecha, new { @class = "form-control", @type = "date" })
             @Html.ValidationMessageFor(model => model.Fecha)
         </div>
 

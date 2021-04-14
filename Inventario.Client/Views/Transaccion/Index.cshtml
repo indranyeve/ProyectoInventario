@@ -9,7 +9,7 @@
 <p>
     <a href="@Url.Action("AddOrEdit", "Transaccion")" class="btn btn-primary">Crear</a>
 </p>
-<table class="table table-striped" id="example" class="display" style="width:100%">
+<table class="table table-striped display" id="example" style="width:100%">
     <thead class="table-heading">
         <tr>
             <th>
@@ -19,7 +19,7 @@
                 @Html.DisplayNameFor(model => model.Tipo_Transaccion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Id_Articulo)
+                @Html.DisplayNameFor(model => model.Almacen.Descripcion)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Fecha)
@@ -46,13 +46,11 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Tipo_Transaccion)
-
-                    @*@Html.DropDownListFor(m => m.Tipo_Transaccion, new SelectList(Enum.GetValues(typeof(Tipo))), "Seleccione") *@
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Id_Articulo)
-                    @*@Html.DisplayNameFor(model => model.Articulo.Descripcion)*@
-                   
+                    @Html.DisplayFor(modelItem => item.Articulo.Descripcion)
+
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Fecha)
@@ -61,13 +59,13 @@
                     @Html.DisplayFor(modelItem => item.Cantidad)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Id_Almacen)
+                    @Html.DisplayFor(modelItem => item.Almacen.Descripcion)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Estado)
                 </td>
                 <td>
-                    <a href="@Url.Action("AddOrEdit", "Transaccion", new { id = item.Id_Transaccion})" class="btn btn-info">Editar</a>
+                    @*<a href="@Url.Action("AddOrEdit", "Transaccion", new { id = item.Id_Transaccion})" class="btn btn-info">Editar</a>*@
                     <a onclick="Delete(@item.Id_Transaccion)" class="btn btn-info">Eliminar</a>
                 </td>
             </tr>

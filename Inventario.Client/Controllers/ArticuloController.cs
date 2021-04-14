@@ -23,7 +23,7 @@ namespace Inventario.Client.Controllers
         //Llamando Servicio Tipo Inventario
         private readonly TipoInventarioService _tipoInventarioService = new TipoInventarioService();
 
-        public async Task<ActionResult>  Index()
+        public async Task<ActionResult> Index()
         {
             List<MvcArticuloModel> Info = new List<MvcArticuloModel>();
 
@@ -34,9 +34,18 @@ namespace Inventario.Client.Controllers
         //CREATE
         public async Task<ActionResult> AddOrEdit(int id = 0)
         {
-             
+            var selectList = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "", Text = "Seleccione", Selected = true }
+            };
+
             var tipoInventarioList = await _tipoInventarioService.GetTipoInventarios();
-            ViewBag.TipoInventarioList = tipoInventarioList.Select(x => new SelectListItem {Value = x.Id_TipoInventario.ToString(), Text = x.Descripcion }).ToList();
+            foreach (var item in tipoInventarioList)
+            {
+                selectList.Add(new SelectListItem { Value = item.Id_TipoInventario.ToString(), Text = item.Descripcion, Selected = false });
+            }
+
+            ViewBag.TipoInventarioList = selectList;
 
             if (id == 0)
             {
