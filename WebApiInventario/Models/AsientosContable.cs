@@ -12,20 +12,17 @@ namespace WebApiInventario.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TipoInventario
+    public partial class AsientosContable
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoInventario()
-        {
-            this.AsientosContables = new HashSet<AsientosContable>();
-        }
-    
+        public int Id_AsientosContables { get; set; }
+        public string descripcion { get; set; }
         public int Id_TipoInventario { get; set; }
-        public string Descripcion { get; set; }
-        public int CuentaContable { get; set; }
+        public int cuentaContable { get; set; }
+        public string Tipo_de_Movimiento { get; set; }
+        public System.DateTime Fecha_Asiento { get; set; }
+        public decimal Monto_Asiento { get; set; }
         public string Estado { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AsientosContable> AsientosContables { get; set; }
+        public virtual TipoInventario TipoInventario { get; set; }
     }
 }

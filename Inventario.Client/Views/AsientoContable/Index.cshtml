@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Inventario.Client.Models.MvcAsientoContable>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Asiento Contable</h2>
+
+<p>
+    <a href="@Url.Action("AddOrEdit", "AsientoContable")" class="btn btn-primary">Crear</a>
+</p>
+
+    <table class="table table-striped" id="example" class="display" style="width:100%">
+        <thead class="table-heading">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_AsientosContables)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_TipoInventario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cuentaContable)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo_de_Movimiento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha_Asiento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Monto_Asiento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id_AsientosContables)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id_TipoInventario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cuentaContable)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipo_de_Movimiento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha_Asiento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Monto_Asiento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    @*<td>
+                        <a href="@Url.Action("AddOrEdit", "AsientoContable", new { id = item.Id_AsientosContables})" class="btn btn-info">Editar</a>
+                        <a onclick="Delete(@item.Id_AsientosContables)" class="btn btn-info">Eliminar</a>
+                    </td>*@
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+    @section Scripts{
+        <script type="text/javascript">
+            $(function () {
+                var successMessage = '@TempData["SuccessMessage"]';
+                if (successMessage != '')
+                    alertify.success(successMessage);
+            });
+
+        function Delete(id) {
+            alertify.confirm('¿Está seguro de que desea eliminar este registro?', function () {
+                location.href = '@Url.Action("Delete", "AsientoContable")/'+ id;
+            }, null)
+        }
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+        </script>
+        }

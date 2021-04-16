@@ -1,0 +1,53 @@
+﻿@model Inventario.Client.Models.MvcAsientoContable
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+
+<div class="body-form">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.Id_AsientosContables)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.descripcion)
+            @Html.EditorFor(model => model.descripcion)
+            @Html.ValidationMessageFor(model => model.descripcion)
+        </div>
+        <div class="form-group">
+            <label>Tipo Inventario</label>
+            @Html.DropDownListFor(model => model.Id_TipoInventario, (List<SelectListItem>)ViewBag.TipoInventarioList)
+            @Html.ValidationMessageFor(model => model.Id_TipoInventario)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cuentaContable)
+            @Html.EditorFor(model => model.cuentaContable)
+            @Html.ValidationMessageFor(model => model.cuentaContable)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tipo_de_Movimiento)
+            @Html.DropDownListFor(model => model.Tipo_de_Movimiento, new SelectList(Enum.GetValues(typeof(Inventario.Client.Models.Tipo1))))
+            @Html.ValidationMessageFor(model => model.Tipo_de_Movimiento)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Monto_Asiento)
+            @Html.EditorFor(model => model.Monto_Asiento)
+            @Html.ValidationMessageFor(model => model.Monto_Asiento)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Estado)
+            @Html.EditorFor(model => model.Estado)
+            @Html.ValidationMessageFor(model => model.Estado)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Sutmit" class="btn bg-primary" />
+            <input type="submit" value="Reset" class="btn btn-dark" />
+        </div>
+    }
+</div>
+

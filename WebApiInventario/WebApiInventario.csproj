@@ -171,6 +171,7 @@
     <Compile Include="Connection.cs" />
     <Compile Include="Controllers\AlmacensController.cs" />
     <Compile Include="Controllers\ArticuloController.cs" />
+    <Compile Include="Controllers\AsientosContablesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TipoInventarioController.cs" />
     <Compile Include="Controllers\TransaccionsController.cs" />
@@ -183,6 +184,9 @@
     </Compile>
     <Compile Include="Models\Articulo.cs">
       <DependentUpon>ModelTransaccion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AsientosContable.cs">
+      <DependentUpon>ModelAsientoContable.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelAlmacen.Context.cs">
       <AutoGen>True</AutoGen>
@@ -213,6 +217,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelArticulo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelAsientoContable.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAsientoContable.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelAsientoContable.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAsientoContable.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelAsientoContable.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAsientoContable.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelTipoInventario.Context.cs">
       <AutoGen>True</AutoGen>
@@ -245,7 +264,7 @@
       <DependentUpon>ModelTransaccion.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoInventario.cs">
-      <DependentUpon>ModelTransaccion.tt</DependentUpon>
+      <DependentUpon>ModelAsientoContable.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Transaccion.cs">
       <DependentUpon>ModelTransaccion.tt</DependentUpon>
@@ -280,6 +299,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelArticulo.edmx</DependentUpon>
       <LastGenOutput>ModelArticulo.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelAsientoContable.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelAsientoContable.edmx</DependentUpon>
+      <LastGenOutput>ModelAsientoContable.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelAsientoContable.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelAsientoContable.edmx</DependentUpon>
+      <LastGenOutput>ModelAsientoContable.cs</LastGenOutput>
     </Content>
     <Content Include="Models\ModelTipoInventario.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -349,6 +378,13 @@
     </EntityDeploy>
     <Content Include="Models\ModelTipoInventario.edmx.diagram">
       <DependentUpon>ModelTipoInventario.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\ModelAsientoContable.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelAsientoContable.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelAsientoContable.edmx.diagram">
+      <DependentUpon>ModelAsientoContable.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

@@ -173,6 +173,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AlmacenController.cs" />
     <Compile Include="Controllers\ArticuloController.cs" />
+    <Compile Include="Controllers\AsientoContableController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TipoInvetarioController.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\mvcAlmacenModel.cs" />
     <Compile Include="Models\MvcArticuloModel.cs" />
+    <Compile Include="Models\MvcAsientoContable.cs" />
     <Compile Include="Models\MvcTipoInventarioModel.cs" />
     <Compile Include="Models\MvcTransaccionModel.cs" />
     <Compile Include="Models\TipoInventario.cs" />
@@ -508,6 +510,8 @@
     <Content Include="Views\TipoInvetario\Index.cshtml" />
     <Content Include="Views\Transaccion\AddOrEdit.cshtml" />
     <Content Include="Views\Transaccion\Index.cshtml" />
+    <Content Include="Views\AsientoContable\Index.cshtml" />
+    <Content Include="Views\AsientoContable\AddOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

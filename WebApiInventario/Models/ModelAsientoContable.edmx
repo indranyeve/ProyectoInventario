@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BaseDatosInventarioModel4.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AsientosContables">
+          <Key>
+            <PropertyRef Name="Id_AsientosContables" />
+          </Key>
+          <Property Name="Id_AsientosContables" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="160" Nullable="false" />
+          <Property Name="Id_TipoInventario" Type="int" Nullable="false" />
+          <Property Name="cuentaContable" Type="int" Nullable="false" />
+          <Property Name="Tipo_de_Movimiento" Type="varchar" MaxLength="10" />
+          <Property Name="Fecha_Asiento" Type="datetime" Nullable="false" />
+          <Property Name="Monto_Asiento" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoInventario">
+          <Key>
+            <PropertyRef Name="Id_TipoInventario" />
+          </Key>
+          <Property Name="Id_TipoInventario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CuentaContable" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AsientosC__Id_Ti__6FE99F9F">
+          <End Role="TipoInventario" Type="Self.TipoInventario" Multiplicity="1" />
+          <End Role="AsientosContables" Type="Self.AsientosContables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoInventario">
+              <PropertyRef Name="Id_TipoInventario" />
+            </Principal>
+            <Dependent Role="AsientosContables">
+              <PropertyRef Name="Id_TipoInventario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BaseDatosInventarioModel4StoreContainer">
+          <EntitySet Name="AsientosContables" EntityType="Self.AsientosContables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoInventario" EntityType="Self.TipoInventario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AsientosC__Id_Ti__6FE99F9F" Association="Self.FK__AsientosC__Id_Ti__6FE99F9F">
+            <End Role="TipoInventario" EntitySet="TipoInventario" />
+            <End Role="AsientosContables" EntitySet="AsientosContables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BaseDatosInventarioModel4" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AsientosContable">
+          <Key>
+            <PropertyRef Name="Id_AsientosContables" />
+          </Key>
+          <Property Name="Id_AsientosContables" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="160" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_TipoInventario" Type="Int32" Nullable="false" />
+          <Property Name="cuentaContable" Type="Int32" Nullable="false" />
+          <Property Name="Tipo_de_Movimiento" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Asiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Monto_Asiento" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TipoInventario" Relationship="BaseDatosInventarioModel4.FK__AsientosC__Id_Ti__6FE99F9F" FromRole="AsientosContable" ToRole="TipoInventario" />
+        </EntityType>
+        <EntityContainer Name="BaseDatosInventarioEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AsientosContables" EntityType="Self.AsientosContable" />
+          <EntitySet Name="TipoInventarios" EntityType="BaseDatosInventarioModel4.TipoInventario" />
+          <AssociationSet Name="FK__AsientosC__Id_Ti__6FE99F9F" Association="BaseDatosInventarioModel4.FK__AsientosC__Id_Ti__6FE99F9F">
+            <End Role="TipoInventario" EntitySet="TipoInventarios" />
+            <End Role="AsientosContable" EntitySet="AsientosContables" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TipoInventario">
+          <Key>
+            <PropertyRef Name="Id_TipoInventario" />
+          </Key>
+          <Property Name="Id_TipoInventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CuentaContable" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AsientosContables" Relationship="BaseDatosInventarioModel4.FK__AsientosC__Id_Ti__6FE99F9F" FromRole="TipoInventario" ToRole="AsientosContable" />
+        </EntityType>
+        <Association Name="FK__AsientosC__Id_Ti__6FE99F9F">
+          <End Type="BaseDatosInventarioModel4.TipoInventario" Role="TipoInventario" Multiplicity="1" />
+          <End Type="BaseDatosInventarioModel4.AsientosContable" Role="AsientosContable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoInventario">
+              <PropertyRef Name="Id_TipoInventario" />
+            </Principal>
+            <Dependent Role="AsientosContable">
+              <PropertyRef Name="Id_TipoInventario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BaseDatosInventarioModel4StoreContainer" CdmEntityContainer="BaseDatosInventarioEntities4">
+          <EntitySetMapping Name="AsientosContables">
+            <EntityTypeMapping TypeName="BaseDatosInventarioModel4.AsientosContable">
+              <MappingFragment StoreEntitySet="AsientosContables">
+                <ScalarProperty Name="Id_AsientosContables" ColumnName="Id_AsientosContables" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="Id_TipoInventario" ColumnName="Id_TipoInventario" />
+                <ScalarProperty Name="cuentaContable" ColumnName="cuentaContable" />
+                <ScalarProperty Name="Tipo_de_Movimiento" ColumnName="Tipo_de_Movimiento" />
+                <ScalarProperty Name="Fecha_Asiento" ColumnName="Fecha_Asiento" />
+                <ScalarProperty Name="Monto_Asiento" ColumnName="Monto_Asiento" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoInventarios">
+            <EntityTypeMapping TypeName="BaseDatosInventarioModel4.TipoInventario">
+              <MappingFragment StoreEntitySet="TipoInventario">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id_TipoInventario" ColumnName="Id_TipoInventario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
