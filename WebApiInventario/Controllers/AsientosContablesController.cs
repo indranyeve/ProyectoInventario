@@ -102,11 +102,21 @@ namespace WebApiInventario.Controllers
                 state = true
             };
 
-            var response = service.Contabilizar(dataToSend);
-            asientosContable.AsientoContabilidad_ID = response.id;
 
-            db.AsientosContables.Add(asientosContable);
-            db.SaveChanges();
+            try
+            {
+                var response = service.Contabilizar(dataToSend);
+                asientosContable.AsientoContabilidad_ID = response.id;
+
+                db.AsientosContables.Add(asientosContable);
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+           
 
             return CreatedAtRoute("DefaultApi", new { id = asientosContable.Id_AsientosContables }, asientosContable);
         }

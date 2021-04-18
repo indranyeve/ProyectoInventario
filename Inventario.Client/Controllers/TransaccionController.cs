@@ -141,7 +141,9 @@ namespace Inventario.Client.Controllers
 
         public SqlConnection openConnection()
         {
-            var connection = new SqlConnection(@"Data source=DESKTOP-3AO6C47;initial catalog=BaseDatosInventario;integrated security=True;");
+            //(@"Data source=DESKTOP-3AO6C47;initial catalog=BaseDatosInventario;integrated security=True;"
+            var sqlConnString = "Data Source=SQL5104.site4now.net;Initial Catalog=db_a72e19_indranyeve;User Id=db_a72e19_indranyeve_admin;Password=Indrany@7777;multipleactiveresultsets=True;application name=EntityFramework&quot;";
+            var connection = new SqlConnection(sqlConnString);
             if (connection.State != ConnectionState.Open) connection.Open();
             return connection;
         }

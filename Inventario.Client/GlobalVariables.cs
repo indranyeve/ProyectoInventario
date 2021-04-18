@@ -13,9 +13,12 @@ namespace Inventario.Client
 
        static GlobalVariables()
         {
-            WebApiClient.BaseAddress = new Uri("http://indranyeve-001-site1.dtempurl.com/");
+
+            WebApiClient.BaseAddress = new Uri("http://indranyeve-001-site1.dtempurl.com/api/");
             WebApiClient.DefaultRequestHeaders.Clear();
             WebApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+ 
         }
     }
 }

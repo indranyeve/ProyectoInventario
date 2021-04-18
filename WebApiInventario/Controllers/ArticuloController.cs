@@ -20,7 +20,7 @@ namespace WebApiInventario.Controllers
         // GET: api/Articulo
         public List<Articulo> GetArticuloes()
         {
-            List<Articulo> articulos = db.Articuloes.Include(x => x.TipoInventario).Where(x => x.Estado.Equals("1")).ToList();
+            List<Articulo> articulos = db.Articuloes.Where(x => x.Estado.Equals("1")).ToList();
             return articulos; 
         }
 

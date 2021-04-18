@@ -27,5 +27,6 @@ namespace WebApiInventario.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AsientosContable> AsientosContables { get; set; }
+        public virtual ICollection<Articulo> Articuloes { get; set; }
     }
 }

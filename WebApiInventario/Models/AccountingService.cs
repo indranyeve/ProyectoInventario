@@ -23,7 +23,7 @@ namespace WebApiInventario.Models
 
     public class AccountingService
     {
-        const string URL = "https://d57b22c5989c.ngrok.io/api/accountingEntry";
+        const string URL = "https://b02767518087.ngrok.io/api/accountingEntry";
         public AccountingParameters Contabilizar(AccountingParameters model)
         {
             using (HttpClient client = new HttpClient())
