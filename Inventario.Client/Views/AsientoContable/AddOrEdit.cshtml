@@ -33,6 +33,12 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Fecha_Asiento)
+            @Html.EditorFor(model => model.Fecha_Asiento)
+            @Html.ValidationMessageFor(model => model.Fecha_Asiento)
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Monto_Asiento)
             @Html.EditorFor(model => model.Monto_Asiento)
             @Html.ValidationMessageFor(model => model.Monto_Asiento)

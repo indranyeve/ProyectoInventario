@@ -37,43 +37,49 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Estado)
                 </th>
-                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AsientoContabilidad_ID)
+                </th>
+                
             </tr>
         </thead>
 
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id_AsientosContables)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.descripcion)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id_TipoInventario)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.cuentaContable)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Tipo_de_Movimiento)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Fecha_Asiento)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Monto_Asiento)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Estado)
-                    </td>
-                    @*<td>
-                        <a href="@Url.Action("AddOrEdit", "AsientoContable", new { id = item.Id_AsientosContables})" class="btn btn-info">Editar</a>
-                        <a onclick="Delete(@item.Id_AsientosContables)" class="btn btn-info">Eliminar</a>
-                    </td>*@
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id_AsientosContables)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id_TipoInventario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cuentaContable)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipo_de_Movimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha_Asiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Monto_Asiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.AsientoContabilidad_ID)
+                </th>
+                @*<td>
+            <a href="@Url.Action("AddOrEdit", "AsientoContable", new { id = item.Id_AsientosContables})" class="btn btn-info">Editar</a>
+            <a onclick="Delete(@item.Id_AsientosContables)" class="btn btn-info">Eliminar</a>
+        </td>*@
+            </tr>
             }
         </tbody>
 

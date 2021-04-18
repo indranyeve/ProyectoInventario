@@ -17,6 +17,7 @@
           <Property Name="Fecha_Asiento" Type="datetime" Nullable="false" />
           <Property Name="Monto_Asiento" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Estado" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="AsientoContabilidad_ID" Type="int" />
         </EntityType>
         <EntityType Name="TipoInventario">
           <Key>
@@ -64,6 +65,7 @@
           <Property Name="Monto_Asiento" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="TipoInventario" Relationship="BaseDatosInventarioModel4.FK__AsientosC__Id_Ti__6FE99F9F" FromRole="AsientosContable" ToRole="TipoInventario" />
+          <Property Name="AsientoContabilidad_ID" Type="Int32" />
         </EntityType>
         <EntityContainer Name="BaseDatosInventarioEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AsientosContables" EntityType="Self.AsientosContable" />
@@ -104,6 +106,7 @@
           <EntitySetMapping Name="AsientosContables">
             <EntityTypeMapping TypeName="BaseDatosInventarioModel4.AsientosContable">
               <MappingFragment StoreEntitySet="AsientosContables">
+                <ScalarProperty Name="AsientoContabilidad_ID" ColumnName="AsientoContabilidad_ID" />
                 <ScalarProperty Name="Id_AsientosContables" ColumnName="Id_AsientosContables" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="Id_TipoInventario" ColumnName="Id_TipoInventario" />

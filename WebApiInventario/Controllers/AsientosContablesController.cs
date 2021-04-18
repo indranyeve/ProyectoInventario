@@ -19,7 +19,16 @@ namespace WebApiInventario.Controllers
         // GET: api/AsientosContables
         public IQueryable<AsientosContable> GetAsientosContables()
         {
-            return db.AsientosContables;
+            
+            try
+            {
+                return db.AsientosContables;
+            }
+            catch (Exception e)
+            {
+                
+                throw e;
+            }
         }
 
         // GET: api/AsientosContables/5
@@ -78,6 +87,23 @@ namespace WebApiInventario.Controllers
             //{
             //    return BadRequest(ModelState);
             //}
+
+            //asientosContable.Fecha_Asiento = asientosContable.Fecha_Asiento == DateTime.MinValue ? null : asientosContable.Fecha_Asiento;
+
+            AccountingService service = new AccountingService();
+            var dataToSend = new AccountingParameters
+            {
+                idAuxiliarSystem = 4,
+                account = asientosContable.cuentaContable,
+                seatAmount = asientosContable.Monto_Asiento,
+                description = asientosContable.descripcion,
+                entreyDate = asientosContable.Fecha_Asiento,
+                movementType = asientosContable.Tipo_de_Movimiento,
+                state = true
+            };
+
+            var response = service.Contabilizar(dataToSend);
+            asientosContable.AsientoContabilidad_ID = response.id;
 
             db.AsientosContables.Add(asientosContable);
             db.SaveChanges();

@@ -15,7 +15,7 @@ namespace Inventario.Client.Controllers
     public class ArticuloController : Controller
     {
         //Hosted web API REST Service base url  
-        string Baseurl = "https://localhost:44350/";
+        string Baseurl = "http://indranyeve-001-site1.dtempurl.com/";
 
         //Llamando Servicio Articulo
         private readonly ArticuloService _articuloService = new ArticuloService();

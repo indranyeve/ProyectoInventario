@@ -18,7 +18,7 @@ namespace Inventario.Client.Controllers
         private readonly TipoInventarioService _tipoInventarioService = new TipoInventarioService();
 
         //Hosted web API REST Service base url  
-        string Baseurl = "https://localhost:44350/";
+        string Baseurl = "http://indranyeve-001-site1.dtempurl.com/";
         public async Task<ActionResult> Index()
         {
             List<MvcTipoInventarioModel> Info = new List<MvcTipoInventarioModel>();

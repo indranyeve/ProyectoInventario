@@ -13,7 +13,7 @@ namespace Inventario.Client
 
        static GlobalVariables()
         {
-            WebApiClient.BaseAddress = new Uri("https://localhost:44350/api/");
+            WebApiClient.BaseAddress = new Uri("http://indranyeve-001-site1.dtempurl.com/");
             WebApiClient.DefaultRequestHeaders.Clear();
             WebApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }

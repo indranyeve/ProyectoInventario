@@ -18,7 +18,7 @@ namespace Inventario.Client.Controllers
     {
         // GET: Transaccion
         //Hosted web API REST Service base url  
-        string Baseurl = "https://localhost:44350/";
+        string Baseurl = "http://indranyeve-001-site1.dtempurl.com/";
 
         //Llamando Servicio Almacen
         private readonly AlmacenService _almacenService = new AlmacenService();

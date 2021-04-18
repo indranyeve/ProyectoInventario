@@ -18,7 +18,7 @@ namespace Inventario.Client.Controllers
         private readonly AlmacenService _almacenService = new AlmacenService();
 
         //Hosted web API REST Service base url  
-        string Baseurl = "https://localhost:44350/";
+        string Baseurl = "http://indranyeve-001-site1.dtempurl.com/";
         public async Task<ActionResult> Index()
         {
             List<mvcAlmacenModel> Info = new List<mvcAlmacenModel>();

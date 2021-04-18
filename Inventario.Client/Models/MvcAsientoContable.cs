@@ -12,8 +12,11 @@ namespace Inventario.Client.Models
         public int Id_TipoInventario { get; set; }
         public int cuentaContable { get; set; }
         public Tipo1 Tipo_de_Movimiento { get; set; }
-        public System.DateTime Fecha_Asiento { get; set; }
+        public System.DateTime? Fecha_Asiento { get; set; }
         public decimal Monto_Asiento { get; set; }
+
+        public Nullable<int> AsientoContabilidad_ID { get; set; }
+
         public string Estado { get; set; }
 
         public virtual TipoInventario TipoInventario { get; set; }

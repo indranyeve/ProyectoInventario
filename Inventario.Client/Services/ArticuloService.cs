@@ -12,7 +12,7 @@ namespace Inventario.Client.Services
 {
     public class ArticuloService
     {
-        string Baseurl = "https://localhost:44350/";
+        string Baseurl = "http://indranyeve-001-site1.dtempurl.com/";
         public async Task<List<MvcArticuloModel>> GetArticuloModels()
         {
             List<MvcArticuloModel> Info = new List<MvcArticuloModel>();
